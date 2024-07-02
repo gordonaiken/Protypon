@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Protypon</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-color: #f4f4f9;
+        }
+        h1 {
+            font-weight: 300;
+            font-size: 3em;
+            margin-bottom: 0;
+        }
+        p {
+            font-size: 1.2em;
+            color: #555;
+        }
+        .carousel {
+            margin: 20px 0;
+            width: 80%;
+            max-width: 600px;
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+        }
+        .carousel img {
+            width: 100%;
+            display: none;
+            border-radius: 10px;
+        }
+        .carousel img.active {
+            display: block;
+        }
+        .carousel .caption {
+            position: absolute;
+            bottom: 10px;
+            width: 100%;
+            text-align: center;
+            color: #fff;
+            font-size: 1em;
+            background: rgba(0, 0, 0, 0.5);
+            padding: 10px;
+            box-sizing: border-box;
+        }
+        .links {
+            margin-top: 20px;
+        }
+        .links a {
+            margin: 0 15px;
+            color: #007BFF;
+            text-decoration: none;
+            font-size: 1em;
+        }
+        .links a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+<h1>Protypon</h1>
+<p>EdTech that helps humans spend more time educating</p>
+
+<div class="carousel">
+    <img src="AssessCreate.webp" alt="Assessment Creation" class="active">
+    <img src="AutoMark.webp" alt="Automated Marking Assist">
+    <img src="QnA.webp" alt="Institution Document Conversation">
+    <div class="caption"></div>
+</div>
+
+<div class="links">
+    <a href="sales.html">Sales</a>
+    <a href="about.html">About Protypon</a>
+    <a href="contact.html">Contact Us</a>
+</div>
+
+<script>
+    const images = document.querySelectorAll('.carousel img');
+    const caption = document.querySelector('.carousel .caption');
+    let currentIndex = 0;
+    const captions = [
+        'Assessment Creation',
+        'Automated Marking Assist',
+        'Institution Document Conversation'
+    ];
+
+    function showImage(index) {
+        images.forEach((img, i) => {
+            img.classList.toggle('active', i === index);
+        });
+        caption.textContent = captions[index];
+    }
+
+    function nextImage() {
+        currentIndex = (currentIndex + 1) % images.length;
+        showImage(currentIndex);
+    }
+
+    setInterval(nextImage, 3000); // Change image every 3 seconds
+
+    // Initialize the caption
+    showImage(currentIndex);
+</script>
+</body>
+</html>
